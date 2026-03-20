@@ -30,7 +30,7 @@ export const RollingBanner: React.FC<RollingBannerProps> = ({ banners }) => {
   const youtubeId = getYoutubeId(currentUrl);
 
   return (
-    <div className="relative w-full aspect-[3/2] bg-black comic-border overflow-hidden transform -rotate-1 pointer-events-none">
+    <div className="relative w-full aspect-video bg-black comic-border overflow-hidden transform lg:rotate-1 hover:rotate-0 transition-transform duration-500 pointer-events-none">
       <div className="absolute inset-0 halftone-bg opacity-10 pointer-events-none z-10" />
       
       <AnimatePresence mode="wait">

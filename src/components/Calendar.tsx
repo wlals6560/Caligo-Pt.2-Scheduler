@@ -94,9 +94,9 @@ export const Calendar: React.FC<CalendarProps> = ({ schedule, onEventClick }) =>
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: idx * 0.01 }}
               className={`
-                min-h-[75px] md:min-h-[110px] lg:min-h-[140px] p-0.5 md:p-1 lg:p-2 border-[0.5px] md:border-2 lg:border-2 border-black transition-all
+                min-h-[75px] md:min-h-[110px] lg:min-h-[140px] p-0.5 md:p-1 lg:p-2 border-2 border-black transition-all
                 ${!isCurrentMonth ? 'opacity-30 grayscale' : 'hover:scale-105 hover:z-10 cursor-default'}
-                ${isToday ? 'bg-yellow-50 border-2 md:border-2 border-[#e63946] z-10' : 'bg-white'}
+                ${isToday ? 'bg-yellow-50 border-[#e63946] z-10' : 'bg-white'}
                 relative group
               `}
             >
@@ -115,11 +115,12 @@ export const Calendar: React.FC<CalendarProps> = ({ schedule, onEventClick }) =>
                     key={event.id}
                     onClick={() => onEventClick(event)}
                     className={`
-                      text-left px-1 md:px-1.5 lg:px-2 py-0.5 md:py-0.5 lg:py-1 text-[8px] md:text-[9px] lg:text-xs font-bold uppercase
-                      border-[0.5px] md:border-1 lg:border-2 border-black
+                      text-left px-1.5 md:px-2 py-0.5 md:py-1 text-[8px] md:text-[11px] font-bold uppercase
+                      border-2 border-black
                       hover:translate-x-[1px] hover:translate-y-[1px]
                       transition-all whitespace-nowrap md:whitespace-normal break-words leading-tight
                       max-w-[calc(100%-2px)] md:max-w-full overflow-hidden text-ellipsis
+                      shadow-[1px_1px_0px_rgba(0,0,0,1)] md:shadow-[2px_2px_0px_rgba(0,0,0,1)]
                       ${event.type === 'CONCEPT PHOTO' ? 'bg-red-600 text-white' : 
                         event.type === 'PRE-ORDER' ? 'bg-white text-black' : 
                         event.type === 'ALBUM PREVIEW' ? 'bg-black text-white' : 

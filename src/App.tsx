@@ -100,7 +100,7 @@ export default function App() {
       {/* Main Content */}
       <main className="relative z-10 container mx-auto pt-24 pb-12 px-4">
         {/* Header Section */}
-        <header className="mb-12 text-center">
+        <header className="mb-20 text-center">
           <motion.div
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -134,9 +134,9 @@ export default function App() {
         </div>
 
         {/* Layout Grid */}
-        <div className="flex flex-col lg:grid lg:grid-cols-4 gap-8 items-start">
+        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 items-start">
           {/* Today's Schedule & Sidebar (Mobile: 1st, Desktop: Sidebar) */}
-          <div className="order-1 lg:order-2 lg:col-span-1 lg:sticky lg:top-8 space-y-16 w-full px-4 md:px-0">
+          <div className="order-1 lg:order-2 lg:col-span-4 lg:sticky lg:top-8 space-y-16 w-full px-4 md:px-0">
             <TodaySchedule schedule={schedule} />
             {/* Desktop only Rolling Banner in sidebar */}
             <div className="hidden lg:block w-full">
@@ -145,7 +145,7 @@ export default function App() {
           </div>
 
           {/* Calendar (Mobile: 2nd, Desktop: Main) */}
-          <div className="order-2 lg:order-1 lg:col-span-3 w-full">
+          <div className="order-2 lg:order-1 lg:col-span-8 w-full">
             <Calendar schedule={schedule} onEventClick={setSelectedEvent} />
           </div>
         </div>

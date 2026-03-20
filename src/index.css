@@ -125,7 +125,7 @@
 }
 
 .caligo-logo {
-  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(4px 4px 0px #000) drop-shadow(8px 8px 12px rgba(0, 0, 0, 0.5));
 }
 
 .comic-title {
