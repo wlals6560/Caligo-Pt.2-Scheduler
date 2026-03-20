@@ -105,9 +105,7 @@
   color: #c83c1c; /* Matching the logo's orange-red */
   line-height: 0.9;
   display: block;
-  text-shadow: 
-    4px 4px 0px rgba(0, 0, 0, 0.8),
-    -1px -1px 0px rgba(0, 0, 0, 0.2);
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .caligo-subtitle {
@@ -123,11 +121,15 @@
   border-top: 2px solid #c83c1c;
   margin-top: 4px;
   padding-top: 2px;
-  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .caligo-logo {
-  filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.8));
+  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.3));
+}
+
+.comic-title {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Custom Scrollbar for Today's Schedule */

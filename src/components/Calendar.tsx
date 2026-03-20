@@ -52,7 +52,7 @@ export const Calendar: React.FC<CalendarProps> = ({ schedule, onEventClick }) =>
   const weekDays = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 pb-4 md:pb-8 pt-0">
+    <div className="w-full max-w-7xl lg:max-w-5xl mx-auto px-4 md:px-6 lg:px-8 pb-4 md:pb-8 pt-0">
       {/* Calendar Header */}
       <div className="flex items-center justify-between mb-8 bg-black p-1 md:p-2 lg:p-3 comic-border transform -rotate-1">
         <button 
@@ -116,8 +116,8 @@ export const Calendar: React.FC<CalendarProps> = ({ schedule, onEventClick }) =>
                     onClick={() => onEventClick(event)}
                     className={`
                       text-left px-1 md:px-1.5 lg:px-2 py-0.5 md:py-0.5 lg:py-1 text-[8px] md:text-[9px] lg:text-xs font-bold uppercase
-                      border-[0.5px] md:border-1 lg:border-2 border-black shadow-[1px_1px_0px_rgba(0,0,0,1)] md:shadow-[1.5px_1.5px_0px_rgba(0,0,0,1)] lg:shadow-[2px_2px_0px_rgba(0,0,0,1)]
-                      hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none
+                      border-[0.5px] md:border-1 lg:border-2 border-black
+                      hover:translate-x-[1px] hover:translate-y-[1px]
                       transition-all whitespace-nowrap md:whitespace-normal break-words leading-tight
                       max-w-[calc(100%-2px)] md:max-w-full overflow-hidden text-ellipsis
                       ${event.type === 'CONCEPT PHOTO' ? 'bg-red-600 text-white' : 

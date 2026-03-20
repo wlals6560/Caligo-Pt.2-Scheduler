@@ -22,7 +22,7 @@ export const TodaySchedule: React.FC<TodayScheduleProps> = ({ schedule }) => {
   });
 
   return (
-    <div className="bg-black p-3 md:p-6 comic-border h-full flex flex-col">
+    <div className="bg-black p-3 md:p-6 comic-border h-full flex flex-col lg:transform lg:-rotate-1">
       <h2 className="text-xl md:text-3xl font-display text-white comic-title italic mb-4 md:mb-6 text-center">
         TODAY'S SCHEDULE
       </h2>
@@ -35,7 +35,7 @@ export const TodaySchedule: React.FC<TodayScheduleProps> = ({ schedule }) => {
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: idx * 0.1 }}
-              className="bg-white p-4 comic-border text-black relative overflow-hidden"
+              className="bg-white p-4 border-4 border-black text-black relative overflow-hidden"
             >
               <div className="relative z-10">
                 <div className={`

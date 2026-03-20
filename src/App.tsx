@@ -7,6 +7,7 @@ import { AdminEditModal } from './components/AdminEditModal';
 import { PLAVE_SCHEDULE, ScheduleEvent } from './data/schedule';
 import { motion } from 'motion/react';
 import { Star, Settings } from 'lucide-react';
+import logo from './assets/logo.png';
 
 export default function App() {
   const [selectedEvent, setSelectedEvent] = useState<ScheduleEvent | null>(null);
@@ -108,7 +109,7 @@ export default function App() {
             <div className="relative z-10 flex flex-row items-center justify-center gap-3 md:gap-4">
               {/* Logo Image */}
               <img 
-                src="/logo.png.png" 
+                src={logo} 
                 alt="CALIGO PT.2" 
                 className="h-10 md:h-20 lg:h-28 object-contain caligo-logo"
                 referrerPolicy="no-referrer"
