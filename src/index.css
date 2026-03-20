@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Anton", sans-serif;
+  --font-comic: "Bangers", cursive;
+}
+
+@layer base {
+  body {
+    @apply bg-[#1a1a1a] text-white overflow-x-hidden;
+    background-image: 
+      radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 5px 5px;
+    @screen md {
+      background-size: 10px 10px;
+    }
+  }
+}
+
+.comic-border {
+  border: 4px solid black;
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.8);
+}
+
+.comic-panel {
+  @apply relative overflow-hidden bg-white text-black;
+  border: 3px solid black;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
+}
+
+.halftone-bg {
+  background-image: radial-gradient(#000 20%, transparent 20%);
+  background-position: 0 0, 5px 5px;
+  background-size: 10px 10px;
+  opacity: 0.05;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+.comic-burst {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg 10deg,
+    currentColor 10deg 20deg,
+    transparent 20deg 30deg,
+    currentColor 30deg 40deg,
+    transparent 40deg 50deg,
+    currentColor 50deg 60deg,
+    transparent 60deg 70deg,
+    currentColor 70deg 80deg,
+    transparent 80deg 90deg,
+    currentColor 90deg 100deg,
+    transparent 100deg 110deg,
+    currentColor 110deg 120deg,
+    transparent 120deg 130deg,
+    currentColor 130deg 140deg,
+    transparent 140deg 150deg,
+    currentColor 150deg 160deg,
+    transparent 160deg 170deg,
+    currentColor 170deg 180deg,
+    transparent 180deg 190deg,
+    currentColor 190deg 200deg,
+    transparent 200deg 210deg,
+    currentColor 210deg 220deg,
+    transparent 220deg 230deg,
+    currentColor 230deg 240deg,
+    transparent 240deg 250deg,
+    currentColor 250deg 260deg,
+    transparent 260deg 270deg,
+    currentColor 270deg 280deg,
+    transparent 280deg 290deg,
+    currentColor 290deg 300deg,
+    transparent 300deg 310deg,
+    currentColor 310deg 320deg,
+    transparent 320deg 330deg,
+    currentColor 330deg 340deg,
+    transparent 340deg 350deg,
+    currentColor 350deg 360deg
+  );
+  mask-image: radial-gradient(circle, black 30%, transparent 70%);
+}
+
+.comic-dots-patch {
+  background-image: radial-gradient(currentColor 2px, transparent 2px);
+  background-size: 12px 12px;
+  mask-image: radial-gradient(circle, black 20%, transparent 70%);
+}
+
+.comic-lines {
+  background: repeating-linear-gradient(
+    45deg,
+    currentColor,
+    currentColor 1px,
+    transparent 1px,
+    transparent 20px
+  );
+  mask-image: linear-gradient(to bottom, transparent, black 50%, transparent);
+}
+
+.caligo-title {
+  font-family: var(--font-sans);
+  font-weight: 900; /* Extra Bold */
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: #c83c1c; /* Matching the logo's orange-red */
+  line-height: 0.9;
+  display: block;
+  text-shadow: 
+    4px 4px 0px rgba(0, 0, 0, 0.8),
+    -1px -1px 0px rgba(0, 0, 0, 0.2);
+}
+
+.caligo-subtitle {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #c83c1c;
+  line-height: 1.2;
+  display: block;
+  opacity: 0.9;
+  border-top: 2px solid #c83c1c;
+  margin-top: 4px;
+  padding-top: 2px;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+.caligo-logo {
+  filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.8));
+}
+
+/* Custom Scrollbar for Today's Schedule */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #e63946;
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #ff4d5a;
+}
+
+.caligo-pt2 {
+  font-size: 0.35em;
+  color: #c83c1c;
+  -webkit-text-stroke: 2px black;
+  transform: rotate(-5deg) skewX(10deg);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.comic-text-red {
+  color: #e63946;
+  font-weight: 900;
+}
+
+/* Custom scrollbar for comic feel */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e63946;
+  border: 3px solid #1a1a1a;
+}
