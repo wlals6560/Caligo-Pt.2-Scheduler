@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Plus, Trash2, Save, RotateCcw } from 'lucide-react';
+import { X, Plus, Trash2, Save, RotateCcw, Copy, Check } from 'lucide-react';
 import { ScheduleEvent, ScheduleType } from '../data/schedule';
 
 interface AdminEditModalProps {
@@ -18,6 +18,7 @@ export const AdminEditModal: React.FC<AdminEditModalProps> = ({ isOpen, onClose,
   const [activeTab, setActiveTab] = useState<'schedule' | 'banners'>('schedule');
   const [editedSchedule, setEditedSchedule] = useState<ScheduleEvent[]>(schedule);
   const [editedBanners, setEditedBanners] = useState<string[]>(banners);
+  const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -78,6 +79,18 @@ export const AdminEditModal: React.FC<AdminEditModalProps> = ({ isOpen, onClose,
       onSaveBanners(editedBanners);
     }
     onClose();
+  };
+
+  const handleExportData = () => {
+    const data = {
+      schedule: editedSchedule,
+      banners: editedBanners
+    };
+    const jsonString = JSON.stringify(data, null, 2);
+    navigator.clipboard.writeText(jsonString).then(() => {
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
+    });
   };
 
   return (
@@ -144,6 +157,14 @@ export const AdminEditModal: React.FC<AdminEditModalProps> = ({ isOpen, onClose,
                 >
                   <Save className="w-4 h-4 md:w-5 md:h-5" />
                   SAVE
+                </button>
+                <button 
+                  onClick={handleExportData}
+                  title="Copy data for AI to update the source code"
+                  className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-blue-500 text-white px-3 md:px-4 py-2 text-xs md:text-sm font-bold border-2 border-black shadow-[2px_2px_0px_rgba(0,0,0,1)] md:shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all"
+                >
+                  {isCopied ? <Check className="w-4 h-4 md:w-5 md:h-5" /> : <Copy className="w-4 h-4 md:w-5 md:h-5" />}
+                  {isCopied ? 'COPIED!' : 'COPY FOR AI'}
                 </button>
                 <button 
                   onClick={onClose}

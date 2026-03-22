@@ -13,10 +13,7 @@ export default function App() {
   const [selectedEvent, setSelectedEvent] = useState<ScheduleEvent | null>(null);
   const [schedule, setSchedule] = useState<ScheduleEvent[]>(PLAVE_SCHEDULE);
   const [banners, setBanners] = useState<string[]>([
-    'https://picsum.photos/seed/plave1/600/400',
-    'https://picsum.photos/seed/plave2/600/400',
-    'https://picsum.photos/seed/plave3/600/400',
-    'https://picsum.photos/seed/plave4/600/400',
+    "https://www.youtube.com/watch?v=FfpJ1CGG-ZE"
   ]);
   const [isAdminModalOpen, setIsAdminModalOpen] = useState(false);
 
