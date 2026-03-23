@@ -4,7 +4,6 @@ import { EventModal } from './components/EventModal';
 import { TodaySchedule } from './components/TodaySchedule';
 import { RollingBanner } from './components/RollingBanner';
 import { VerticalRollingBanner } from './components/VerticalRollingBanner';
-import { VideoPlayerArea } from './components/VideoPlayerArea';
 import { AdminEditModal } from './components/AdminEditModal';
 import { PLAVE_SCHEDULE, ScheduleEvent } from './data/schedule';
 import { motion } from 'motion/react';
@@ -55,15 +54,7 @@ export default function App() {
     localStorage.setItem('plave_banners', JSON.stringify(newBanners));
   };
 
-  const getYoutubeId = (url: string) => {
-    if (!url) return null;
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-    const match = url.match(regExp);
-    return (match && match[2].length === 11) ? match[2] : null;
-  };
-
-  const videoBanners = banners.filter(url => getYoutubeId(url));
-  const imageBanners = banners.filter(url => !getYoutubeId(url));
+  const imageBanners = banners;
 
   return (
     <div className="min-h-screen bg-[#252525] relative overflow-hidden font-sans selection:bg-[#e63946] selection:text-white">
@@ -142,12 +133,9 @@ export default function App() {
         </header>
 
         {/* Mobile only Banner Area at top */}
-        <div className="lg:hidden w-full max-w-2xl mx-auto mb-20 px-4 space-y-6">
+        <div className="lg:hidden w-full max-w-2xl mx-auto mb-20 px-4">
           {imageBanners.length > 0 && (
             <VerticalRollingBanner images={imageBanners} />
-          )}
-          {videoBanners.length > 0 && (
-            <VideoPlayerArea videoUrls={videoBanners} />
           )}
         </div>
 
@@ -158,22 +146,16 @@ export default function App() {
             <TodaySchedule schedule={schedule} />
             
             {/* Desktop only specialized areas */}
-            <div className="hidden lg:block space-y-6 w-full">
+            <div className="hidden lg:block w-full">
               {imageBanners.length > 0 && (
                 <VerticalRollingBanner images={imageBanners} />
-              )}
-              {videoBanners.length > 0 && (
-                <VideoPlayerArea videoUrls={videoBanners} />
               )}
             </div>
 
             {/* Mobile only Banner area (if needed, but already handled above) */}
-            <div className="lg:hidden w-full space-y-6">
+            <div className="lg:hidden w-full">
               {imageBanners.length > 0 && (
                 <VerticalRollingBanner images={imageBanners} />
-              )}
-              {videoBanners.length > 0 && (
-                <VideoPlayerArea videoUrls={videoBanners} />
               )}
             </div>
           </div>

@@ -20,33 +20,35 @@ export const VerticalRollingBanner: React.FC<VerticalRollingBannerProps> = ({ im
   if (images.length === 0) return null;
 
   return (
-    <div className="relative w-full aspect-[3/4] bg-black comic-border overflow-hidden transform lg:-rotate-1 hover:rotate-0 transition-transform duration-500">
+    <div className="relative w-full aspect-[3/4] lg:aspect-[4/5] bg-black comic-border overflow-hidden transform lg:-rotate-1 hover:rotate-0 transition-transform duration-500">
       <div className="absolute inset-0 halftone-bg opacity-10 pointer-events-none z-10" />
       
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentIndex}
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: -100, opacity: 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="absolute inset-0 w-full h-full"
-        >
-          <img
-            src={images[currentIndex]}
-            alt="Vertical Banner"
-            className="w-full h-full object-cover transition-all duration-500"
-            referrerPolicy="no-referrer"
-          />
-        </motion.div>
-      </AnimatePresence>
+      <div className="absolute inset-0 p-1 lg:p-3">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex}
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -100, opacity: 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="w-full h-full relative border-2 border-white/20"
+          >
+            <img
+              src={images[currentIndex]}
+              alt="Vertical Banner"
+              className="w-full h-full object-cover transition-all duration-500"
+              referrerPolicy="no-referrer"
+            />
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
       {images.length > 1 && (
-        <div className="absolute bottom-2 right-2 z-20 flex gap-1">
+        <div className="absolute bottom-4 right-4 z-20 flex gap-1.5">
           {images.map((_, idx) => (
             <div 
               key={idx}
-              className={`w-1.5 h-1.5 rounded-full border border-white ${idx === currentIndex ? 'bg-[#e63946]' : 'bg-white/30'}`}
+              className={`w-2 h-2 rounded-full border border-white ${idx === currentIndex ? 'bg-[#e63946]' : 'bg-white/30'}`}
             />
           ))}
         </div>
