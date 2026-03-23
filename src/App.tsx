@@ -13,7 +13,12 @@ export default function App() {
   const [selectedEvent, setSelectedEvent] = useState<ScheduleEvent | null>(null);
   const [schedule, setSchedule] = useState<ScheduleEvent[]>(PLAVE_SCHEDULE);
   const [banners, setBanners] = useState<string[]>([
-    "https://www.youtube.com/watch?v=FfpJ1CGG-ZE"
+    "https://www.youtube.com/watch?v=FfpJ1CGG-ZE",
+    "https://pbs.twimg.com/media/HEGJM1fagAAaczp?format=jpg&name=4096x4096",
+    "https://pbs.twimg.com/media/HEGJUt9acAAnfgA?format=jpg&name=4096x4096",
+    "https://pbs.twimg.com/media/HEGJdB4akAAdBAS?format=jpg&name=4096x4096",
+    "https://pbs.twimg.com/media/HEGJmr2aAAAIe58?format=jpg&name=4096x4096",
+    "https://pbs.twimg.com/media/HEGJwD3bMAAohWm?format=jpg&name=4096x4096"
   ]);
   const [isAdminModalOpen, setIsAdminModalOpen] = useState(false);
 
@@ -54,17 +59,6 @@ export default function App() {
       {/* Background Decorative Elements */}
       <div className="fixed inset-0 halftone-bg opacity-10 pointer-events-none" />
       <div className="fixed inset-0 bg-gradient-to-tr from-black/50 via-transparent to-black/50 pointer-events-none" />
-      
-      {/* PC Only Test Background */}
-      <div 
-        className="fixed inset-0 hidden lg:block pointer-events-none z-[-1]"
-        style={{
-          backgroundImage: 'url("https://picsum.photos/seed/vibrant-anime/1920/1080?blur=2")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          filter: 'brightness(0.4) blur(4px)',
-        }}
-      />
       
       {/* Scattered Comic Effects in Background */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
