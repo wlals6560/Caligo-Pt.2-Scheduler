@@ -55,6 +55,17 @@ export default function App() {
       <div className="fixed inset-0 halftone-bg opacity-10 pointer-events-none" />
       <div className="fixed inset-0 bg-gradient-to-tr from-black/50 via-transparent to-black/50 pointer-events-none" />
       
+      {/* PC Only Test Background */}
+      <div 
+        className="fixed inset-0 hidden lg:block pointer-events-none z-[-1]"
+        style={{
+          backgroundImage: 'url("https://picsum.photos/seed/vibrant-anime/1920/1080?blur=2")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          filter: 'brightness(0.4) blur(4px)',
+        }}
+      />
+      
       {/* Scattered Comic Effects in Background */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         {/* Subtle Dots in top right */}
