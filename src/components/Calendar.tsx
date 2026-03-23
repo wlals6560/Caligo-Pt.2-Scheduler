@@ -121,7 +121,7 @@ export const Calendar: React.FC<CalendarProps> = ({ schedule, onEventClick }) =>
                       transition-all whitespace-nowrap md:whitespace-normal break-words leading-tight
                       max-w-[calc(100%-2px)] md:max-w-full overflow-hidden text-ellipsis
                       shadow-[1px_1px_0px_rgba(0,0,0,1)] md:shadow-[2px_2px_0px_rgba(0,0,0,1)]
-                      ${event.type === 'CONCEPT PHOTO' ? 'bg-red-600 text-white' : 
+                      ${event.type === 'CONCEPT PHOTO' ? 'bg-[#D93915] text-white' : 
                         event.type === 'PRE-ORDER' ? 'bg-white text-black' : 
                         event.type === 'ALBUM PREVIEW' ? 'bg-black text-white' : 
                         event.type === 'PROMOTION' ? 'bg-gray-300 text-black' : 

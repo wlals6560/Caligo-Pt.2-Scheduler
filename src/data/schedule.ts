@@ -44,7 +44,7 @@ export const PLAVE_SCHEDULE: ScheduleEvent[] = [
     "title": "Concept Photo A",
     "date": "2026-03-24",
     "endDate": "2026-03-25",
-    "description": "https://x.com/plave_official/status/2036100657363710358?s=20",
+    "description": "Coming Soon",
     "type": "CONCEPT PHOTO"
   },
   {

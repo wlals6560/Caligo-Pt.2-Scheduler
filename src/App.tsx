@@ -3,6 +3,8 @@ import { Calendar } from './components/Calendar';
 import { EventModal } from './components/EventModal';
 import { TodaySchedule } from './components/TodaySchedule';
 import { RollingBanner } from './components/RollingBanner';
+import { VerticalRollingBanner } from './components/VerticalRollingBanner';
+import { VideoPlayerArea } from './components/VideoPlayerArea';
 import { AdminEditModal } from './components/AdminEditModal';
 import { PLAVE_SCHEDULE, ScheduleEvent } from './data/schedule';
 import { motion } from 'motion/react';
@@ -13,12 +15,11 @@ export default function App() {
   const [selectedEvent, setSelectedEvent] = useState<ScheduleEvent | null>(null);
   const [schedule, setSchedule] = useState<ScheduleEvent[]>(PLAVE_SCHEDULE);
   const [banners, setBanners] = useState<string[]>([
-    "https://www.youtube.com/watch?v=FfpJ1CGG-ZE",
+    "https://pbs.twimg.com/media/HEGJwD3bMAAohWm?format=jpg&name=4096x4096",
     "https://pbs.twimg.com/media/HEGJM1fagAAaczp?format=jpg&name=4096x4096",
-    "https://pbs.twimg.com/media/HEGJUt9acAAnfgA?format=jpg&name=4096x4096",
-    "https://pbs.twimg.com/media/HEGJdB4akAAdBAS?format=jpg&name=4096x4096",
     "https://pbs.twimg.com/media/HEGJmr2aAAAIe58?format=jpg&name=4096x4096",
-    "https://pbs.twimg.com/media/HEGJwD3bMAAohWm?format=jpg&name=4096x4096"
+    "https://pbs.twimg.com/media/HEGJdB4akAAdBAS?format=jpg&name=4096x4096",
+    "https://pbs.twimg.com/media/HEGJUt9acAAnfgA?format=jpg&name=4096x4096"
   ]);
   const [isAdminModalOpen, setIsAdminModalOpen] = useState(false);
 
@@ -53,6 +54,16 @@ export default function App() {
     setBanners(newBanners);
     localStorage.setItem('plave_banners', JSON.stringify(newBanners));
   };
+
+  const getYoutubeId = (url: string) => {
+    if (!url) return null;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+  };
+
+  const videoBanners = banners.filter(url => getYoutubeId(url));
+  const imageBanners = banners.filter(url => !getYoutubeId(url));
 
   return (
     <div className="min-h-screen bg-[#252525] relative overflow-hidden font-sans selection:bg-[#e63946] selection:text-white">
@@ -130,19 +141,40 @@ export default function App() {
           </motion.div>
         </header>
 
-        {/* Mobile only Rolling Banner at top */}
-        <div className="lg:hidden w-full max-w-2xl mx-auto mb-20 px-4">
-          <RollingBanner banners={banners} />
+        {/* Mobile only Banner Area at top */}
+        <div className="lg:hidden w-full max-w-2xl mx-auto mb-20 px-4 space-y-6">
+          {imageBanners.length > 0 && (
+            <VerticalRollingBanner images={imageBanners} />
+          )}
+          {videoBanners.length > 0 && (
+            <VideoPlayerArea videoUrls={videoBanners} />
+          )}
         </div>
 
         {/* Layout Grid */}
         <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 items-start">
           {/* Today's Schedule & Sidebar (Mobile: 1st, Desktop: Sidebar) */}
-          <div className="order-1 lg:order-2 lg:col-span-4 lg:sticky lg:top-8 space-y-16 w-full px-4 md:px-0">
+          <div className="order-1 lg:order-2 lg:col-span-4 lg:sticky lg:top-8 space-y-8 lg:space-y-6 w-full px-4 md:px-0">
             <TodaySchedule schedule={schedule} />
-            {/* Desktop only Rolling Banner in sidebar */}
-            <div className="hidden lg:block w-full">
-              <RollingBanner banners={banners} />
+            
+            {/* Desktop only specialized areas */}
+            <div className="hidden lg:block space-y-6 w-full">
+              {imageBanners.length > 0 && (
+                <VerticalRollingBanner images={imageBanners} />
+              )}
+              {videoBanners.length > 0 && (
+                <VideoPlayerArea videoUrls={videoBanners} />
+              )}
+            </div>
+
+            {/* Mobile only Banner area (if needed, but already handled above) */}
+            <div className="lg:hidden w-full space-y-6">
+              {imageBanners.length > 0 && (
+                <VerticalRollingBanner images={imageBanners} />
+              )}
+              {videoBanners.length > 0 && (
+                <VideoPlayerArea videoUrls={videoBanners} />
+              )}
             </div>
           </div>
 
